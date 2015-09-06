@@ -32,6 +32,7 @@
 	<li style="font-family:'Helvetica'; font-size: large"><a href="#tema6">Módulos</a></li>
 	<li style="font-family:'Helvetica'; font-size: large"><a href="#conclusion">Conclusión</a></li>
 	<li style="font-family:'Helvetica'; font-size: large"><a href="#bibliografia">Bibliografía</a></li>
+	<li style="font-family:'Helvetica'; font-size: large"><a href="#tema7">¿Cómo crear tablas internas en SAP?</a></li>
 	</ol>
 	<br/>
 	<hr/>
@@ -100,6 +101,37 @@
 	<br/>
 	<hr/>
 	<br/>
+	<h1 id="tema7" style="text-align:center; color:blue">¿Cómo crear Tablas internas en SAP?</h1>
+	<p>Para gestionar datos en  los programas, se usan las tablas internas. Las mismas solo existirán en tiempo de ejecución. Podemos tener dos tipos de tablas internas con cabecera de línea sin cabecera de línea. Si declaramos la tabla sin cabecera, deberemos declarar un área de trabajo, que tendrá la misma estructura (definición de campos) que la tabla interna. Si la tabla tiene  cabecera, no es necesario declarar área de trabajo. Entenderemos mejor esto con los ejemplos que vayamos viendo más adelante. 
+	Ej: <br>
+	Declaración de tabla con cabecera</p>
+	<code>
+	<pre>
+		DATA: BEGIN OF TABLA OCCURS 0, 
+            COLUMNA1 TYPE C, 
+            COLUMNA2 TYPE I, 
+            END OF TABLA. 
+	</pre>
+	</code>
+	<p>Al colocar el <kbd>OCCURS 0</kbd>, la tabla tendrá cabecera, y no será necesario declarar área de trabajo. </p>
+	<code>
+	<pre>
+		DATA: BEGIN OF TYE_TABLA, 
+            COLUMNA1 TYPE C, 
+            COLUMNA2 TYPE I, 
+            END OF TYE_TABLA. 
+	</pre>
+	</code>
+	Aquí estamos declarando una estructura, que es un tipo tabla. A continuación, declaramos la tabla en referencia al tipo creado: <br>
+	<code>DATA TABLA TYPE TYE_TABLA WITH HEADER LINE. </code><br>
+	<br>
+	En este caso estamos declarando la tabla con cabecera (WITH HEADER LINE). <br>
+	<code>DATA: TABLA TYPE STANDARD TABLE OF TYE_TABLA. </code>
+	<code>DATA: WA_TABLA TYPE TYE_TABLA. </code>
+	<p>Aquí estamos declarando en primer lugar, la tabla sin cabecera, y luego el work área (área de trabajo WA_TABLA). </p>
+	<br/>
+	<hr/>
+	<br/>
 	<h1 id="conclusion" style="text-align:center; color:blue">Conclusion</h1>
 	<p style="text-align:justify; font-family:'Helvetica'; font-size: large">El propósito de este documento era definir el concepto SAP y algunos aspectos mas sobre su uso y conocimiento, sabemos lo que es SAP, sabemos sobre la empresa SAP AG, hemos leído que es la competencia de IBM, Oracle y Microsoft como ERP, todo en orden, pero ¿cómo seguir aprendiendo SAP? ¿Busco manuales de consultoría o busco manuales de usuario?
 	<br>
@@ -112,7 +144,8 @@
 	<hr/>
 	<br/>
 	<h1 id="bibliografia" style="text-align:center; color:blue">Bibliografía</h1>
-	http://www.consultoria-sap.com/2014/06/cursos-aprender-sap.html
+	<p>http://www.consultoria-sap.com/2014/06/cursos-aprender-sap.html</p>
+	<p>http://www.monografias.com/trabajos-pdf2/introduccion-programacion-sap-abap-paso/introduccion-programacion-sap-abap-paso.pdf</p>
 	<br/>
 	<hr/>
 	<br/>
